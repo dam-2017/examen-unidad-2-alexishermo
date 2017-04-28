@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <form [formGroup]="formulario">
+ <ion-card>
+   <ion-card-header>
+     Login
+   </ion-card-header>
+   <ion-card-content>
+     <ion-list>
+          <ion-item>
+              <ion-label color="dark">Usuario:</ion-label>  
+              <ion-input formControlName="usuario" type="text" [(ngModel)]="datos.usuario"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="formulario.get('usuario').errors && formulario.get('usuario').dirty"> 
+               <p color="dark" *ngIf="formulario.get('usuario').hasError('required')">Llenar campo "Usuario"</p>  
+               <p color="dark" *ngIf="formulario.get('usuario').hasError('minlength')">"Usuario" minimo 6 caracteres</p> 
+               <p color="dark" *ngIf="formulario.get('usuario').hasError('pattern')">"Usuario" incorrecto(sin carac. esp. ni mayusculas ni num.)</p>   
+          </ion-item>
+
+          <ion-item> 
+              <ion-label color="dark">Contrasena:</ion-label>  
+              <ion-input formControlName="contrasena" type="password" [(ngModel)]="datos.contrasena"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="formulario.get('contrasena').errors && formulario.get('contrasena').dirty"> 
+               <p color="dark" *ngIf="formulario.get('contrasena').hasError('required')">Llenar campo "Contrasena"</p>  
+               <p color="dark" *ngIf="formulario.get('contrasena').hasError('pattern')">Formato: #Control+@+ittepic</p>  
+               <p color="dark" *ngIf="formulario.get('contrasena').hasError('minlength')">"Contrasena" minimo de 8 caracteres</p>  
+          </ion-item>
+
+     </ion-list>
+   </ion-card-content>
+ </ion-card>
+ </form>
+
+ <button block ion-button [navPush]="otherPage" [navParams]="datos" [disabled]="formulario.invalid">Ingresar</button>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+       OtherPage 2
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1>Bienvenido alhermosillobe</h1>
+  <form [formGroup]="formulario2">
+    <ion-list no-lines>
+         <ion-item>
+            <ion-label color="dark">Nombre:</ion-label>
+            <ion-input formControlName="nombre" type="text" [(ngModel)]="datos2.nombre"></ion-input>   
+         </ion-item>
+         <ion-item *ngIf="formulario2.get('nombre').errors && formulario2.get('nombre').dirty"> 
+               <p color="dark" *ngIf="formulario2.get('nombre').hasError('required')">Llenar campo "Nombre"</p> 
+          </ion-item>
+
+         <ion-item>
+            <ion-label color="dark">Apellido Materno:</ion-label>
+            <ion-input formControlName="apem" type="text" [(ngModel)]="datos2.apem"></ion-input>   
+         </ion-item>
+         <ion-item *ngIf="formulario2.get('apem').errors && formulario2.get('apem').dirty"> 
+               <p color="dark" *ngIf="formulario2.get('apem').hasError('required')">Llenar campo "Apellido Mat"</p> 
+          </ion-item>
+
+         <ion-item>
+            <ion-label color="dark">Apellido Paterno:</ion-label>
+            <ion-input formControlName="apep" type="text" [(ngModel)]="datos2.apep"></ion-input>   
+         </ion-item>
+         <ion-item *ngIf="formulario2.get('apep').errors && formulario2.get('apep').dirty"> 
+               <p color="dark" *ngIf="formulario2.get('apep').hasError('required')">Llenar campo "Apellido Pat"</p> 
+          </ion-item>
+         
+         
+         <ion-item>
+            <ion-label color="dark">Fecha Nacimiento:</ion-label>
+            <ion-datetime formControlName="fecha" displayFormat="YYYY/MM/DD" [(ngModel)]="datos2.fecha"></ion-datetime>
+         </ion-item>
+
+         <ion-item> 
+            <ion-label color="dark">RFC:</ion-label>
+            <ion-input formControlName="rfc" type="text" [(ngModel)]="datos2.rfc"></ion-input>
+         </ion-item>
+    </ion-list>
+  </form>
+
+  <button block ion-button (click)="validar()" [disabled]="formulario2.invalid">Validar</button>
+    
+</ion-content>
